@@ -1,1 +1,139 @@
+package basics;
+
+import java.util.Scanner;
+
+public class MatrixOperations {
+
+    // Matrix addition
+    static void add(int[][] a, int[][] b, int r, int c) {
+        int[][] sum = new int[r][c];
+        for (int i = 0; i < r; i++) {
+            for (int j = 0; j < c; j++) {
+                sum[i][j] = a[i][j] + b[i][j];
+            }
+        }
+        display(sum, r, c);
+    }
+
+    // Matrix subtraction
+    static void subtract(int[][] a, int[][] b, int r, int c) {
+        int[][] sub = new int[r][c];
+        for (int i = 0; i < r; i++) {
+            for (int j = 0; j < c; j++) {
+                sub[i][j] = a[i][j] - b[i][j];
+            }
+        }
+        display(sub, r, c);
+    }
+
+    // Matrix multiplication
+    static void multiply(int[][] a, int[][] b, int r1, int c1, int c2) {
+        int[][] mul = new int[r1][c2];
+
+        for (int i = 0; i < r1; i++) {
+            for (int j = 0; j < c2; j++) {
+                for (int k = 0; k < c1; k++) {
+                    mul[i][j] += a[i][k] * b[k][j];
+                }
+            }
+        }
+        display(mul, r1, c2);
+    }
+
+    // Transpose
+    static void transpose(int[][] a, int r, int c) {
+        int[][] t = new int[c][r];
+        for (int i = 0; i < r; i++) {
+            for (int j = 0; j < c; j++) {
+                t[j][i] = a[i][j];
+            }
+        }
+        display(t, c, r);
+    }
+
+    // Check square matrix
+    static boolean isSquare(int r, int c) {
+        return r == c;
+    }
+
+    // Check diagonal matrix
+    static boolean isDiagonal(int[][] a, int n) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (i != j && a[i][j] != 0)
+                    return false;
+            }
+        }
+        return true;
+    }
+
+    // Check identity matrix
+    static boolean isIdentity(int[][] a, int n) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (i == j && a[i][j] != 1)
+                    return false;
+                if (i != j && a[i][j] != 0)
+                    return false;
+            }
+        }
+        return true;
+    }
+
+    // Display matrix
+    static void display(int[][] a, int r, int c) {
+        for (int i = 0; i < r; i++) {
+            for (int j = 0; j < c; j++) {
+                System.out.print(a[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter rows and columns: ");
+        int r = sc.nextInt();
+        int c = sc.nextInt();
+
+        int[][] a = new int[r][c];
+        int[][] b = new int[r][c];
+
+        System.out.println("Enter first matrix:");
+        for (int i = 0; i < r; i++)
+            for (int j = 0; j < c; j++)
+                a[i][j] = sc.nextInt();
+
+        System.out.println("Enter second matrix:");
+        for (int i = 0; i < r; i++)
+            for (int j = 0; j < c; j++)
+                b[i][j] = sc.nextInt();
+
+        System.out.println("\nAddition:");
+        add(a, b, r, c);
+
+        System.out.println("\nSubtraction:");
+        subtract(a, b, r, c);
+
+        if (isSquare(r, c)) {
+            System.out.println("\nMultiplication:");
+            multiply(a, b, r, c, c);
+
+            System.out.println("\nTranspose of first matrix:");
+            transpose(a, r, c);
+
+            System.out.println("\nDiagonal Matrix Check:");
+            System.out.println(isDiagonal(a, r) ? "Yes" : "No");
+
+            System.out.println("\nIdentity Matrix Check:");
+            System.out.println(isIdentity(a, r) ? "Yes" : "No");
+        } else {
+            System.out.println("\nMatrix is not square. Some operations not possible.");
+        }
+
+        sc.close();
+    }
+}
 
