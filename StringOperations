@@ -1,1 +1,79 @@
+package basics;
+
+public class StringOperations {
+
+    public static void main(String[] args) {
+
+        String s1 = "  Hello Java World  ";
+        String s2 = "Hello Java World";
+        String s3 = "Java";
+
+        // length()
+        System.out.println("Length: " + s1.length());
+
+        // isEmpty()
+        System.out.println("Is Empty: " + s1.isEmpty());
+
+        // charAt()
+        System.out.println("Char at index 1: " + s2.charAt(1));
+
+        // toString()
+        String strObj = s2.toString();
+        System.out.println("toString(): " + strObj);
+
+        // equals()
+        System.out.println("Equals: " + s2.equals(s3));
+
+        // compareTo()
+        System.out.println("CompareTo: " + s2.compareTo(s3));
+
+        // contains()
+        System.out.println("Contains 'Java': " + s2.contains("Java"));
+
+        // indexOf()
+        System.out.println("IndexOf 'a': " + s2.indexOf('a'));
+
+        // lastIndexOf()
+        System.out.println("LastIndexOf 'a': " + s2.lastIndexOf('a'));
+
+        // startsWith()
+        System.out.println("StartsWith 'Hello': " + s2.startsWith("Hello"));
+
+        // endsWith()
+        System.out.println("EndsWith 'World': " + s2.endsWith("World"));
+
+        // matches()
+        System.out.println("Matches regex: " + s3.matches("[A-Za-z]+"));
+
+        // substring()
+        System.out.println("Substring: " + s2.substring(6, 10));
+
+        // toLowerCase()
+        System.out.println("Lowercase: " + s2.toLowerCase());
+
+        // trim()
+        System.out.println("Trimmed: " + s1.trim());
+
+        // replace()
+        System.out.println("Replace: " + s2.replace("Java", "Core Java"));
+
+        // split()
+        String[] words = s2.split(" ");
+        System.out.println("Split:");
+        for (String word : words) {
+            System.out.println(word);
+        }
+
+        // join()
+        String joined = String.join("-", words);
+        System.out.println("Joined: " + joined);
+
+        // valueOf()
+        int num = 100;
+        String numStr = String.valueOf(num);
+        System.out.println("ValueOf: " + numStr);
+    }
+}
+
+
 
