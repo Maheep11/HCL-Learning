@@ -1,0 +1,23 @@
+//A way to create a gateway for JDBC connection to java file eliminating the redundancy of giving I'D password again and again..//\
+package HCLAT;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class JdbcConnection {
+
+    private static final String URL =
+            "jdbc:mysql://localhost:3306/schooldb";
+    private static final String USER = "root";
+    private static final String PASSWORD = "Maheep@128";
+
+    public static Connection getConnection() {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            return DriverManager.getConnection(URL, USER, PASSWORD);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+}
