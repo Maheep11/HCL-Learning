@@ -1,0 +1,20 @@
+Basic Syntax of Selenium code to open the browser automatically ; 
+1 -> Create a Maven Project 
+2 -> In the SRC file of that project , get into the pom.xml file 
+3 -> In that file add dependencies of selenium that imports all the packages required 
+
+
+Basic code for opening browser - 
+
+import org.openqa.selenium.WebDriver ;
+import org.openqa.selemium.chrome.ChromeDriver ; 
+
+public class prog1 {
+  public static void main (String[] args){
+
+    WebDriver  driver = new ChromeDriver();
+    driver.get("URL of the Website to be opened") ; 
+    driver.close(); 
+  }
+}
+
