@@ -1,0 +1,78 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.Collection;
+
+public class HashMapDemo {
+
+    public static void main(String[] args) {
+
+        // ---------------- Constructors ----------------
+
+        // 1. Default constructor
+        HashMap<Integer, String> map1 = new HashMap<>();
+
+        // 2. Constructor with initial capacity
+        HashMap<Integer, String> map2 = new HashMap<>(10);
+
+        // 3. Constructor with initial capacity and load factor
+        HashMap<Integer, String> map3 = new HashMap<>(10, 0.75f);
+
+        // 4. Constructor using another map
+        HashMap<Integer, String> map4 = new HashMap<>(map1);
+
+        // ---------------- Methods Demonstration ----------------
+
+        // 1. put(K, V)
+        map1.put(1, "Apple");
+        map1.put(2, "Banana");
+        map1.put(3, "Mango");
+
+        // 2. putIfAbsent(K, V)
+        map1.putIfAbsent(4, "Orange");
+
+        // 3. get(Object key)
+        System.out.println("Value for key 2: " + map1.get(2));
+
+        // 4. containsKey(Object key)
+        System.out.println("Contains key 3? " + map1.containsKey(3));
+
+        // 5. containsValue(Object value)
+        System.out.println("Contains value Mango? " + map1.containsValue("Mango"));
+
+        // 6. size()
+        System.out.println("Size of map: " + map1.size());
+
+        // 7. isEmpty()
+        System.out.println("Is map empty? " + map1.isEmpty());
+
+        // 8. remove(Object key)
+        map1.remove(1);
+
+        // 9. replace(K, V)
+        map1.replace(2, "Grapes");
+
+        // 10. keySet()
+        Set<Integer> keys = map1.keySet();
+        System.out.println("Keys: " + keys);
+
+        // 11. values()
+        Collection<String> values = map1.values();
+        System.out.println("Values: " + values);
+
+        // 12. entrySet()
+        Set<Map.Entry<Integer, String>> entries = map1.entrySet();
+        System.out.println("Entries: " + entries);
+
+        // 13. forEach(BiConsumer)
+        System.out.println("Using forEach:");
+        map1.forEach((k, v) -> System.out.println(k + " = " + v));
+
+        // 14. getOrDefault(K, V)
+        System.out.println("Get key 5: " + map1.getOrDefault(5, "Not Found"));
+
+        // 15. clear()
+        map4.clear();
+        System.out.println("map4 after clear(): " + map4);
+    }
+}
