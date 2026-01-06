@@ -1,0 +1,84 @@
+import java.util.Hashtable;
+import java.util.Set;
+import java.util.Collection;
+import java.util.Enumeration;
+import java.util.Map;
+
+public class HashtableDemo {
+
+    public static void main(String[] args) {
+
+        // ---------------- Constructors ----------------
+
+        // 1. Default constructor
+        Hashtable<Integer, String> ht1 = new Hashtable<>();
+
+        // 2. Constructor with initial capacity
+        Hashtable<Integer, String> ht2 = new Hashtable<>(10);
+
+        // 3. Constructor with initial capacity and load factor
+        Hashtable<Integer, String> ht3 = new Hashtable<>(10, 0.75f);
+
+        // 4. Constructor using another map
+        Hashtable<Integer, String> ht4 = new Hashtable<>(ht1);
+
+        // ---------------- Methods Demonstration ----------------
+
+        // 1. put(K, V)
+        ht1.put(1, "Java");
+        ht1.put(2, "Python");
+        ht1.put(3, "C++");
+
+        // 2. get(Object key)
+        System.out.println("Value of key 2: " + ht1.get(2));
+
+        // 3. containsKey(Object key)
+        System.out.println("Contains key 3? " + ht1.containsKey(3));
+
+        // 4. containsValue(Object value)
+        System.out.println("Contains value Java? " + ht1.containsValue("Java"));
+
+        // 5. size()
+        System.out.println("Size: " + ht1.size());
+
+        // 6. isEmpty()
+        System.out.println("Is empty? " + ht1.isEmpty());
+
+        // 7. remove(Object key)
+        ht1.remove(1);
+
+        // 8. replace(K, V)
+        ht1.replace(2, "JavaScript");
+
+        // 9. keySet()
+        Set<Integer> keys = ht1.keySet();
+        System.out.println("Keys: " + keys);
+
+        // 10. values()
+        Collection<String> values = ht1.values();
+        System.out.println("Values: " + values);
+
+        // 11. entrySet()
+        Set<Map.Entry<Integer, String>> entries = ht1.entrySet();
+        System.out.println("Entries: " + entries);
+
+        // 12. forEach(BiConsumer)
+        System.out.println("Using forEach:");
+        ht1.forEach((k, v) -> System.out.println(k + " -> " v));
+
+        // 13. Enumeration (keys)
+        System.out.print("Keys using Enumeration: ");
+        Enumeration<Integer> e = ht1.keys();
+        while (e.hasMoreElements()) {
+            System.out.print(e.nextElement() + " ");
+        }
+        System.out.println();
+
+        // 14. getOrDefault(K, V)
+        System.out.println("Key 5: " + ht1.getOrDefault(5, "Not Found"));
+
+        // 15. clear()
+        ht4.clear();
+        System.out.println("ht4 after clear(): " + ht4);
+    }
+}
