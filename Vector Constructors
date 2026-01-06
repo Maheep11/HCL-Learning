@@ -1,0 +1,82 @@
+import java.util.Vector;
+import java.util.Enumeration;
+import java.util.Collections;
+
+public class VectorDemo {
+
+    public static void main(String[] args) {
+
+        // ---------------- Constructors ----------------
+
+        // 1. Default constructor
+        Vector<Integer> v1 = new Vector<>();
+
+        // 2. Constructor with initial capacity
+        Vector<Integer> v2 = new Vector<>(5);
+
+        // 3. Constructor with initial capacity and increment
+        Vector<Integer> v3 = new Vector<>(5, 3);
+
+        // 4. Constructor using another collection
+        Vector<Integer> v4 = new Vector<>(v1);
+
+        // ---------------- Methods Demonstration ----------------
+
+        // 1. add(E e)
+        v1.add(10);
+        v1.add(20);
+        v1.add(30);
+
+        // 2. add(int index, E element)
+        v1.add(1, 15);
+
+        // 3. addElement(E e)
+        v1.addElement(40);
+
+        // 4. size()
+        System.out.println("Size: " + v1.size());
+
+        // 5. capacity()
+        System.out.println("Capacity: " + v1.capacity());
+
+        // 6. get(int index)
+        System.out.println("Element at index 2: " + v1.get(2));
+
+        // 7. set(int index, E element)
+        v1.set(0, 5);
+
+        // 8. remove(int index)
+        v1.remove(3);
+
+        // 9. removeElement(Object o)
+        v1.removeElement(15);
+
+        // 10. contains(Object o)
+        System.out.println("Contains 20? " + v1.contains(20));
+
+        // 11. indexOf(Object o)
+        System.out.println("Index of 20: " + v1.indexOf(20));
+
+        // 12. firstElement()
+        System.out.println("First Element: " + v1.firstElement());
+
+        // 13. lastElement()
+        System.out.println("Last Element: " + v1.lastElement());
+
+        // 14. Enumeration
+        System.out.print("Elements using Enumeration: ");
+        Enumeration<Integer> e = v1.elements();
+        while (e.hasMoreElements()) {
+            System.out.print(e.nextElement() + " ");
+        }
+        System.out.println();
+
+        // 15. clear()
+        v4.clear();
+        System.out.println("v4 after clear(): " + v4);
+
+        // Extra (bonus)
+        Collections.sort(v1);
+        System.out.println("Sorted Vector: " + v1);
+    }
+}
