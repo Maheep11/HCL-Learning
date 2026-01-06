@@ -1,0 +1,23 @@
+package Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+
+public class webelement {
+
+	public static void main(String[] args) {
+		WebDriver driver = new ChromeDriver() ; 
+		driver.get("https://www.codechef.com");
+		WebElement t1 = driver.findElement(By.className("m-login-button"));
+		t1.click();
+		WebElement t2 = driver.findElement(By.id("edit-name"));
+		WebElement t3 = driver.findElement(By.id("edit-pass"));
+		WebElement b1 = driver.findElement(By.className("cc-login-btn"));
+		t2.sendKeys("User-ID");
+		t3.sendKeys("User Password");
+		b1.click(); 
+	}
+
+}
