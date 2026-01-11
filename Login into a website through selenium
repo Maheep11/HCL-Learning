@@ -1,1 +1,33 @@
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.By;
+
+public class TestingWeb {
+    static void main() {
+
+        // Create a driver to operate the browser;
+        WebDriver driver = new ChromeDriver() ;
+
+        //Give driver the link to open ;
+        driver.get("http://eaapp.somee.com") ;
+
+        //Giving the preview functions through manage method;
+        driver.manage().window().fullscreen();
+
+        //Accessing the element by is id and directly clicking on it (Refactoring) ;
+        driver.findElement(By.id("loginLink")).click();
+
+        //Directly accessing the element and passing its attributes to it(Refactoring type method) ;
+        driver.findElement(By.name("UserName")).sendKeys("admin");
+
+       // General method to access the elements ;
+        WebElement txtpass = driver.findElement(By.name("Password"));
+        txtpass.sendKeys("password");
+
+        driver.findElement(By.cssSelector(".btn")).click();
+
+
+    }
+}
 
