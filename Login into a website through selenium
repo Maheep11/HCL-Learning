@@ -2,6 +2,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.Select;
 
 public class TestingWeb {
     static void main() {
@@ -15,19 +16,39 @@ public class TestingWeb {
         //Giving the preview functions through manage method;
         driver.manage().window().fullscreen();
 
-        //Accessing the element by is id and directly clicking on it (Refactoring) ;
+        login(driver) ;
+
+        create(driver);
+
+        logoff(driver);
+
+    }
+    public static void login (WebDriver driver){
         driver.findElement(By.id("loginLink")).click();
 
         //Directly accessing the element and passing its attributes to it(Refactoring type method) ;
         driver.findElement(By.name("UserName")).sendKeys("admin");
 
-       // General method to access the elements ;
+        // General method to access the elements ;
         WebElement txtpass = driver.findElement(By.name("Password"));
         txtpass.sendKeys("password");
 
         driver.findElement(By.cssSelector(".btn")).click();
+    }
 
+    public static void create(WebDriver driver){
+        driver.findElement(By.linkText("Employee List")).click() ;
+        driver.findElement(By.linkText("Create New")).click();
+        driver.findElement(By.id("Name")).sendKeys("AutoUser");
+        driver.findElement(By.id("Salary")).sendKeys("100000");
+        driver.findElement(By.id("DurationWorked")).sendKeys("20");
+        Select selectGrade = new Select(driver.findElement(By.id("Grade")));
+        selectGrade.selectByVisibleText("Middle");
+        driver.findElement(By.id("Email")).sendKeys("AutoUser1@gmail.com");
+        driver.findElement(By.cssSelector(".btn")).click();
+    }
 
+    public static void logoff(WebDriver driver){
+        driver.findElement(By.linkText("Log off")).click();
     }
 }
-
