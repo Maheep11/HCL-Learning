@@ -1,1 +1,59 @@
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
+public class Registration {
+    WebDriver driver ;
+    @FindBy(id = "fname") WebElement fn ;
+    @FindBy(id = "lname") WebElement ln ;
+    @FindBy(id = "email") WebElement email ;
+    @FindBy(id = "password") WebElement pass ;
+    @FindBy(id="male") WebElement gen1 ;
+    @FindBy(id="female") WebElement gen2 ;
+    @FindBy(xpath = "//button[@type='submit']") WebElement sbmt ;
+
+    public Registration(WebDriver driver) {
+        this.driver = driver ;
+        PageFactory.initElements(driver,this);
+    }
+    public void testfname (String f){
+        fn.sendKeys(f);
+    }
+    public void testlname(String l){
+        ln.sendKeys(l);
+    }
+    public void testemail(String e){
+        email.sendKeys(e);
+    }
+    public void testgn(String g){
+        if(g.equalsIgnoreCase("male")){
+            gen1.click();
+        }
+        else {
+            gen2.click();
+        }
+    }
+    public void testbtn(){
+        sbmt.click();
+    }
+
+    public void testPass(String p){
+        pass.sendKeys(p);
+    }
+
+    public static void main(String[] args) {
+        WebDriver driver1 = new ChromeDriver();
+        driver1.manage().window().maximize();
+        driver1.get("C:\\Users\\MAHEEP\\OneDrive\\Desktop\\HCL learning\\html learning\\login2.html") ;
+        Registration r1 = new Registration(driver1) ;
+        r1.testfname("Abc");
+        r1.testlname("mna");
+        r1.testemail("manm@gmail.com");
+        r1.testgn("male");
+        r1.testPass("adsgfg");
+        r1.testbtn();
+    }
+
+}
